@@ -145,6 +145,11 @@ const DynamicFormPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        if (!formId) {
+            alert("Form ID is missing!");
+            return;
+        }
+
         setIsSubmitting(true); // Start loading
 
         try {
@@ -155,19 +160,19 @@ const DynamicFormPage = () => {
                 data: formData
             });
 
-            // Handle successful submission (e.g., update context, show success message, etc.)
+
             addApplication({ id: Date.now().toString(), formId, data: formData });
 
             alert("Application Submitted!");
 
-            // Optionally, redirect to the applications list page
+
             navigate("/applications");
 
         } catch (error) {
             console.error("Error submitting form:", error);
             alert("Failed to submit the application. Please try again.");
         } finally {
-            setIsSubmitting(false); // Stop loading
+            setIsSubmitting(false);
         }
     };
 
