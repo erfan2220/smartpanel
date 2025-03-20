@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+    .dark input[type="checkbox"],
+    .dark input[type="radio"] {
+        @apply bg-gray-700 border-gray-600;
+    }
+
+    .dark input[type="checkbox"]:checked,
+    .dark input[type="radio"]:checked {
+        @apply bg-blue-600 border-blue-600;
+    }
+}
